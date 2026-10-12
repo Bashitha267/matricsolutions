@@ -8,7 +8,7 @@ const DAMPING     = 0.80;    // velocity friction
 const MOUSE_R     = 110;     // mouse repel radius (px)
 const MOUSE_F     = 7;       // repel force magnitude
 const DRIFT_AMP   = 0.35;    // idle drift amplitude
-const SAMPLE_GAP  = 4;       // pixel sampling gap (lower = more particles, heavier)
+const SAMPLE_GAP  = 3.2;     // pixel sampling gap (lower = more particles, heavier)
 
 interface Particle {
   x: number;   // current
@@ -50,17 +50,10 @@ export default function ParticleText({ height = 220, className = "" }: Props) {
     canvas.style.height = H + "px";
 
     /* — Offscreen canvas — render two lines of text — */
-    const isMobile = W < 640;
-    const lines = isMobile
-      ? [
-          { text: "WE CAN HELP YOU", color: "#ffffff" },
-          { text: "GROW YOUR",       color: "#ffffff" },
-          { text: "BUSINESS.",       color: "#e35c24" },
-        ]
-      : [
-          { text: "WE CAN HELP YOU GROW YOUR", color: "#ffffff" },
-          { text: "BUSINESS.",                color: "#e35c24" },
-        ];
+    const lines = [
+      { text: "WE CAN HELP YOU GROW YOUR", color: "#ffffff" },
+      { text: "BUSINESS.",                color: "#e35c24" },
+    ];
 
     // Target safe width: 90% of available canvas width so text has side padding
     const maxTextWidth = W * dpr * 0.90;
@@ -70,7 +63,8 @@ export default function ParticleText({ height = 220, className = "" }: Props) {
     off.height   = H * dpr;
     const octx   = off.getContext("2d")!;
 
-    let fs = Math.min(W * (isMobile ? 0.082 : 0.055), isMobile ? 34 : 64);
+    const isMobile = W < 768;
+    let fs = Math.min(W * (isMobile ? 0.065 : 0.055), isMobile ? 48 : 64);
     octx.font = `900 ${fs * dpr}px Montserrat, "Arial Black", sans-serif`;
 
     let maxW = 0;

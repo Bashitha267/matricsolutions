@@ -71,12 +71,26 @@ export default function Hero() {
       {/* ── Centered content ── */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 w-full max-w-6xl mx-auto">
 
-        {/* ── PARTICLE TEXT heading — replaces the plain <h1> ── */}
+        {/* ── Mobile Crisp Typography Heading ── */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="md:hidden text-3xl sm:text-4xl font-black uppercase tracking-tight leading-[1.12] text-white font-[family-name:var(--font-montserrat)] px-2 max-w-sm sm:max-w-md mx-auto"
+        >
+          WE CAN HELP YOU GROW YOUR{" "}
+          <span className="text-[#e35c24] drop-shadow-[0_0_25px_rgba(227,92,36,0.6)]">
+            BUSINESS
+          </span>
+          <span className="text-white">.</span>
+        </motion.h1>
+
+        {/* ── Desktop Interactive PARTICLE TEXT heading ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="w-full flex justify-center"
+          className="hidden md:flex w-full justify-center"
           /* pointer-events on so mouse repulsion works */
         >
           <ParticleText height={230} className="w-full" />

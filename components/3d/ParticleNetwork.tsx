@@ -46,17 +46,21 @@ export default function ParticleNetwork() {
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
-      radius: 1.8 + Math.random() * 2,
-      opacity: 0.55 + Math.random() * 0.45,
+      radius: 1.6 + Math.random() * 1.8,
+      opacity: 0.50 + Math.random() * 0.45,
     });
 
     const init = () => {
-      particles = Array.from({ length: NODE_COUNT }, makeParticle);
+      const isMobile = width < 640;
+      const count = isMobile ? 32 : NODE_COUNT;
+      particles = Array.from({ length: count }, makeParticle);
     };
 
     /* ── draw ── */
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
+      const isMobile = width < 640;
+      const maxDist = isMobile ? 110 : MAX_DIST;
 
       // update positions
       for (const p of particles) {
@@ -95,8 +99,8 @@ export default function ParticleNetwork() {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.35;
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.35;
             ctx.beginPath();
             ctx.strokeStyle = `rgba(${LINE_COLOR},${alpha})`;
             ctx.lineWidth = 0.7;
