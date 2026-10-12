@@ -407,7 +407,7 @@ export default function ScrollTimelineServices() {
         <div className="relative z-10 h-full flex flex-col lg:flex-row">
 
           {/* ─ MOBILE TOP IMAGE (top part image) ─ */}
-          <div className="lg:hidden w-full flex items-center justify-center pt-8 pb-2 px-5 shrink-0">
+          <div className="lg:hidden w-full flex items-center justify-center pt-14 pb-1 px-4 shrink-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`mobile-img-${activeIdx}`}
@@ -499,7 +499,7 @@ export default function ScrollTimelineServices() {
           </div>
 
           {/* ─ LEFT (DESKTOP) / BOTTOM (MOBILE) TEXT PANEL ─ */}
-          <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-1 pb-16 sm:py-0">
+          <div className="flex-1 flex flex-col justify-start lg:justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-2 pb-16 sm:py-0">
 
             <AnimatePresence mode="wait">
               <motion.div
