@@ -404,10 +404,10 @@ export default function ScrollTimelineServices() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-60" />
 
         {/* ── Layout: left text | right visual ── */}
-        <div className="relative z-10 h-full flex flex-col lg:flex-row">
+        <div className="relative z-10 h-full flex flex-col justify-end lg:justify-normal lg:flex-row pt-20 pb-12 sm:pb-14 lg:py-0">
 
           {/* ─ MOBILE TOP IMAGE (top part image) ─ */}
-          <div className="lg:hidden w-full flex items-center justify-center pt-14 pb-1 px-4 shrink-0">
+          <div className="lg:hidden w-full flex items-center justify-center pb-2 px-5 shrink-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`mobile-img-${activeIdx}`}
@@ -499,7 +499,7 @@ export default function ScrollTimelineServices() {
           </div>
 
           {/* ─ LEFT (DESKTOP) / BOTTOM (MOBILE) TEXT PANEL ─ */}
-          <div className="flex-1 flex flex-col justify-start lg:justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-2 pb-16 sm:py-0">
+          <div className="flex-initial lg:flex-1 flex flex-col justify-start lg:justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-1 pb-1 sm:py-0">
 
             <AnimatePresence mode="wait">
               <motion.div
