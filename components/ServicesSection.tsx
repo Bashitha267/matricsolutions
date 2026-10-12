@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 import {
   motion,
   useScroll,
@@ -23,6 +24,7 @@ const SERVICES = [
     num: "01",
     id:  "social-media",
     title: "SOCIAL MEDIA\nMARKETING",
+    image: "/services/social-media-new.jpg",
     tagline: "Widespread Exposure & Engagement",
     description:
       "We promise to give you excellent social media marketing so that your company receives more widespread exposure — turning followers into loyal customers.",
@@ -48,6 +50,7 @@ const SERVICES = [
     num: "02",
     id:  "logo-design",
     title: "LOGO\nDESIGN",
+    image: "/services/logo-design-new.jpg",
     tagline: "First Impression & Brand Identity",
     description:
       "Logo is the first impression of your business. It will help you to spread the word about your company and your goals — crafted to last.",
@@ -73,6 +76,7 @@ const SERVICES = [
     num: "03",
     id:  "web-development",
     title: "WEB\nDEVELOPMENT",
+    image: "/services/web-development-new.jpg",
     tagline: "High Performance & Tailored Results",
     description:
       "To give you the greatest results, we use web developers with plenty of experience — ultra-fast, SEO-optimised, and beautiful on every device.",
@@ -98,6 +102,7 @@ const SERVICES = [
     num: "04",
     id:  "app-development",
     title: "APP\nDEVELOPMENT",
+    image: "/services/app-development.png",
     tagline: "Valuable Pricing & Modern Tech",
     description:
       "We develop high quality apps with the latest technologies based on your requirements for a fair and valuable price — iOS & Android, one codebase.",
@@ -123,6 +128,7 @@ const SERVICES = [
     num: "05",
     id:  "graphic-design",
     title: "GRAPHIC\nDESIGN",
+    image: "/services/graphic-design.png",
     tagline: "Visual Communication & Impact",
     description:
       "A graphic design company that ensures your message or idea is successfully communicated through stunning visual appearance and impactful design.",
@@ -148,6 +154,7 @@ const SERVICES = [
     num: "06",
     id:  "video-editing",
     title: "VIDEO\nEDITING",
+    image: "/services/video-editing.png",
     tagline: "Cinematic Quality & Tailored Service",
     description:
       "We use video editors with the greatest experience to deliver 4K cinematic production — motion graphics, social reels, and audio mastering.",
@@ -397,7 +404,69 @@ export default function ScrollTimelineServices() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-60" />
 
         {/* ── Layout: left text | right visual ── */}
-        <div className="relative z-10 h-full flex">
+        <div className="relative z-10 h-full flex flex-col lg:flex-row">
+
+          {/* ─ MOBILE TOP IMAGE (top part image) ─ */}
+          <div className="lg:hidden w-full flex items-center justify-center pt-8 pb-2 px-5 shrink-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`mobile-img-${activeIdx}`}
+                initial={{ opacity: 0, scale: 0.94, y: -10 }}
+                animate={{ opacity: 1, scale: 1,    y: 0 }}
+                exit   ={{ opacity: 0, scale: 0.94, y: 10 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-full max-w-[360px] h-[190px] sm:h-[230px] rounded-2xl overflow-hidden border"
+                style={{
+                  borderColor: `${svc.accent}55`,
+                  boxShadow: `0 14px 40px rgba(0,0,0,0.85), 0 0 35px ${svc.accent}25`,
+                }}
+              >
+                <Image
+                  src={svc.image}
+                  alt={svc.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 360px, 400px"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07070a]/90 via-[#07070a]/20 to-transparent" />
+
+                {/* Accent border ring */}
+                <div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{ boxShadow: `inset 0 0 0 1px ${svc.accent}40` }}
+                />
+
+                <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <span
+                    className="text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full"
+                    style={{
+                      backgroundColor: `${svc.accent}30`,
+                      border: `1px solid ${svc.accent}60`,
+                      color: svc.accent,
+                    }}
+                  >
+                    SERVICE {svc.num}
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400">
+                    {activeIdx + 1} / {SERVICES.length}
+                  </span>
+                </div>
+
+                <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-white tracking-wide truncate max-w-[70%]">
+                    {svc.tagline}
+                  </span>
+                  <span
+                    className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/70 border border-white/10"
+                    style={{ color: svc.accent }}
+                  >
+                    {svc.tags[0]}
+                  </span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           {/* ─ LEFT VERTICAL PROGRESS RAIL ─ */}
           <div className="hidden lg:flex flex-col items-center justify-center gap-3 pl-8 pr-4 py-12 shrink-0">
@@ -429,8 +498,8 @@ export default function ScrollTimelineServices() {
             </div>
           </div>
 
-          {/* ─ LEFT TEXT PANEL ─ */}
-          <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-8 pb-16 sm:py-0">
+          {/* ─ LEFT (DESKTOP) / BOTTOM (MOBILE) TEXT PANEL ─ */}
+          <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-1 pb-16 sm:py-0">
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -439,10 +508,10 @@ export default function ScrollTimelineServices() {
                 animate={{ opacity: 1, x: 0,   filter: "blur(0px)" }}
                 exit   ={{ opacity: 0, x:  40, filter: "blur(8px)" }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-3 sm:space-y-4 lg:space-y-6"
+                className="space-y-2 sm:space-y-4 lg:space-y-6"
               >
-                {/* Service number badge */}
-                <div className="flex items-center gap-2.5 sm:gap-3">
+                {/* Service number badge (Desktop) */}
+                <div className="hidden lg:flex items-center gap-2.5 sm:gap-3">
                   <div
                     className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-black tracking-widest uppercase"
                     style={{
@@ -465,9 +534,9 @@ export default function ScrollTimelineServices() {
 
                 {/* Title */}
                 <h2
-                  className="font-black leading-[1.0] tracking-tight text-white"
+                  className="font-black leading-[1.05] tracking-tight text-white"
                   style={{
-                    fontSize: "clamp(1.9rem, 4.5vw, 4rem)",
+                    fontSize: "clamp(1.6rem, 4vw, 4rem)",
                     fontFamily: "var(--font-montserrat, sans-serif)",
                     whiteSpace: "pre-line",
                   }}
@@ -487,7 +556,7 @@ export default function ScrollTimelineServices() {
                 </p>
 
                 {/* Description */}
-                <p className="text-slate-300 text-xs sm:text-base leading-relaxed max-w-md">
+                <p className="text-slate-300 text-xs sm:text-base leading-relaxed max-w-md line-clamp-2 sm:line-clamp-none">
                   {svc.description}
                 </p>
 
