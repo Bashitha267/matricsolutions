@@ -1,0 +1,130 @@
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+        <defs>
+          <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0E1017" />
+            <stop offset="50%" stop-color="#08090D" />
+            <stop offset="100%" stop-color="#050508" />
+          </linearGradient>
+          <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E35C24" />
+            <stop offset="100%" stop-color="#B83F10" />
+          </linearGradient>
+          <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1E2333" />
+            <stop offset="100%" stop-color="#121520" />
+          </linearGradient>
+          <radialGradient id="glowGrad" cx="50%" cy="48%" r="45%">
+            <stop offset="0%" stop-color="#FF6B35" stop-opacity="0.3" />
+            <stop offset="60%" stop-color="#FF6B35" stop-opacity="0.05" />
+            <stop offset="100%" stop-color="transparent" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+
+        <!-- Base Background -->
+        <rect width="800" height="1000" fill="url(#bgGrad)" />
+
+        <!-- Grid Lines Pattern -->
+        <g stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1">
+          <line x1="80" y1="0" x2="80" y2="1000" />
+          <line x1="240" y1="0" x2="240" y2="1000" />
+          <line x1="400" y1="0" x2="400" y2="1000" />
+          <line x1="560" y1="0" x2="560" y2="1000" />
+          <line x1="720" y1="0" x2="720" y2="1000" />
+          <line x1="0" y1="200" x2="800" y2="200" />
+          <line x1="0" y1="400" x2="800" y2="400" />
+          <line x1="0" y1="600" x2="800" y2="600" />
+          <line x1="0" y1="800" x2="800" y2="800" />
+        </g>
+
+        <!-- Ambient Center Glow -->
+        <circle cx="400" cy="480" r="350" fill="url(#glowGrad)" />
+
+        <!-- Border Frame -->
+        <rect x="30" y="30" width="740" height="940" rx="20" fill="none" stroke="#FF6B35" stroke-width="2" stroke-opacity="0.35" />
+        <rect x="40" y="40" width="720" height="920" rx="16" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.08" />
+
+        <!-- Top Header Info -->
+        <g transform="translate(60, 90)">
+          <!-- Brand Tag -->
+          <text x="0" y="0" fill="#94A3B8" font-family="'Raleway', sans-serif" font-size="14" font-weight="700" letter-spacing="3">MATRIX DIGITAL SOLUTION</text>
+          <!-- Service Number -->
+          <text x="680" y="5" fill="#FF6B35" font-family="monospace" font-size="28" font-weight="900" text-anchor="end">02</text>
+          <line x1="0" y1="25" x2="680" y2="25" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="1" />
+        </g>
+
+        <!-- Center 3D Symbol Illustration -->
+        
+      <!-- 3D Network Orbit & Viral Spheres -->
+      <g transform="translate(400, 480)">
+        <ellipse cx="0" cy="0" rx="160" ry="70" fill="none" stroke="#FF6B35" stroke-width="3" transform="rotate(-25)" opacity="0.6" />
+        <ellipse cx="0" cy="0" rx="160" ry="70" fill="none" stroke="#FFA07A" stroke-width="2" transform="rotate(35)" opacity="0.5" />
+        <!-- Center Radiant Core -->
+        <circle cx="0" cy="0" r="55" fill="url(#coreGrad)" stroke="#FFF" stroke-width="3" />
+        <circle cx="0" cy="0" r="25" fill="#FFF" />
+        <!-- Orbiting Nodes -->
+        <g transform="translate(130, -50)">
+          <circle cx="0" cy="0" r="22" fill="#FF6B35" stroke="#FFF" stroke-width="2" />
+          <path d="M-8,-4 L8,4 M8,-4 L-8,4" stroke="#FFF" stroke-width="2" />
+        </g>
+        <g transform="translate(-120, 60)">
+          <circle cx="0" cy="0" r="18" fill="#FFA07A" stroke="#FFF" stroke-width="2" />
+        </g>
+        <g transform="translate(-80, -90)">
+          <circle cx="0" cy="0" r="15" fill="#E35C24" />
+        </g>
+        <!-- Metric spike graph -->
+        <polyline points="-120,130 -60,110 0,135 60,80 120,50" fill="none" stroke="#FFF" stroke-width="4" />
+      </g>
+    
+
+        <!-- Bottom Service Name & Details Banner -->
+        <g transform="translate(60, 750)">
+          <!-- Category Pill -->
+          <rect x="0" y="0" width="290" height="28" rx="14" fill="#FF6B35" fill-opacity="0.15" stroke="#FF6B35" stroke-opacity="0.4" stroke-width="1" />
+          <text x="14" y="19" fill="#FFA07A" font-family="'Raleway', sans-serif" font-size="11" font-weight="800" letter-spacing="2">AUDIENCE &amp;amp; VIRAL EXPANSION</text>
+
+          <!-- PROMINENT SERVICE NAME -->
+          <text x="0" y="70" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="36" font-weight="900" letter-spacing="1">
+            SOCIAL MEDIA MARKETING
+          </text>
+
+          <!-- Tagline -->
+          <text x="0" y="105" fill="#CBD5E1" font-family="'Raleway', sans-serif" font-size="18" font-weight="500">
+            Widespread exposure &amp;amp; high conversion
+          </text>
+
+          <!-- Spec Tags Row -->
+          <g transform="translate(0, 135)">
+            
+              <g transform="translate(0, 0)">
+                <rect x="0" y="0" width="155" height="26" rx="6" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1" />
+                <circle cx="12" cy="13" r="3" fill="#FF6B35" />
+                <text x="22" y="17" fill="#E2E8F0" font-family="'Raleway', sans-serif" font-size="10" font-weight="600">Meta &amp;amp; TikTok Ads</text>
+              </g>
+            
+              <g transform="translate(165, 0)">
+                <rect x="0" y="0" width="155" height="26" rx="6" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1" />
+                <circle cx="12" cy="13" r="3" fill="#FF6B35" />
+                <text x="22" y="17" fill="#E2E8F0" font-family="'Raleway', sans-serif" font-size="10" font-weight="600">Audience Growth</text>
+              </g>
+            
+              <g transform="translate(330, 0)">
+                <rect x="0" y="0" width="155" height="26" rx="6" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1" />
+                <circle cx="12" cy="13" r="3" fill="#FF6B35" />
+                <text x="22" y="17" fill="#E2E8F0" font-family="'Raleway', sans-serif" font-size="10" font-weight="600">Content Strategy</text>
+              </g>
+            
+              <g transform="translate(495, 0)">
+                <rect x="0" y="0" width="155" height="26" rx="6" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1" />
+                <circle cx="12" cy="13" r="3" fill="#FF6B35" />
+                <text x="22" y="17" fill="#E2E8F0" font-family="'Raleway', sans-serif" font-size="10" font-weight="600">Campaign Analytics</text>
+              </g>
+            
+          </g>
+        </g>
+
+        <!-- Subtle Watermark Seal -->
+        <text x="740" y="940" fill="#94A3B8" font-family="monospace" font-size="11" opacity="0.4" text-anchor="end">MATRIX • AUS / LK</text>
+      </svg>
+    
