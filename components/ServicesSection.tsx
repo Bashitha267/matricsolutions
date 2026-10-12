@@ -404,10 +404,10 @@ export default function ScrollTimelineServices() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-60" />
 
         {/* ── Layout: left text | right visual ── */}
-        <div className="relative z-10 h-full flex flex-col justify-end lg:justify-normal lg:flex-row pt-20 pb-12 sm:pb-14 lg:py-0">
+        <div className="relative z-10 h-full flex flex-col justify-center items-center lg:justify-normal lg:items-stretch lg:flex-row pt-16 sm:pt-20 pb-12 sm:pb-14 lg:py-0">
 
           {/* ─ MOBILE TOP IMAGE (top part image) ─ */}
-          <div className="lg:hidden w-full flex items-center justify-center pb-2 px-5 shrink-0">
+          <div className="lg:hidden w-full flex items-center justify-center pb-2.5 px-4 shrink-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={`mobile-img-${activeIdx}`}
@@ -415,7 +415,7 @@ export default function ScrollTimelineServices() {
                 animate={{ opacity: 1, scale: 1,    y: 0 }}
                 exit   ={{ opacity: 0, scale: 0.94, y: 10 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full max-w-[360px] h-[190px] sm:h-[230px] rounded-2xl overflow-hidden border"
+                className="relative w-full max-w-[350px] h-[175px] sm:h-[220px] rounded-2xl overflow-hidden border"
                 style={{
                   borderColor: `${svc.accent}55`,
                   boxShadow: `0 14px 40px rgba(0,0,0,0.85), 0 0 35px ${svc.accent}25`,
@@ -499,7 +499,7 @@ export default function ScrollTimelineServices() {
           </div>
 
           {/* ─ LEFT (DESKTOP) / BOTTOM (MOBILE) TEXT PANEL ─ */}
-          <div className="flex-initial lg:flex-1 flex flex-col justify-start lg:justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-1 pb-1 sm:py-0">
+          <div className="flex-initial lg:flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] py-0">
 
             <AnimatePresence mode="wait">
               <motion.div
