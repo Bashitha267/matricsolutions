@@ -16,8 +16,6 @@ const IMAGES = [
 ];
 
 const COUNT   = IMAGES.length;
-const CARD_W  = 320;
-const CARD_H  = 420;
 
 /* ── Sine-wave DNA curve math ── */
 function getDNA(norm: number) {          // norm: –0.5 … +0.5
@@ -28,17 +26,27 @@ function getDNA(norm: number) {          // norm: –0.5 … +0.5
     opacity: 0.15 + 0.85 * ((cos + 1) / 2),   // 0.15 → 1.0
     zIndex:  Math.round(10 + cos * 10),
     rotateY: -sin * 35,                         // ±35°
-    y:        sin * 65,                          // ±65 px vertical wave
-    blur:    (1 - (cos + 1) / 2) * 8,          // 0 → 8 px
+    y:        sin * 55,                          // vertical wave
+    blur:    (1 - (cos + 1) / 2) * 6,          // 0 → 6 px
   };
 }
 
 export default function DNAProjectCarousel() {
-  /* integer active index — NO auto-play */
   const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const dragStartX  = useRef<number | null>(null);
   const dragStartAct = useRef(0);
   const isDragging  = useRef(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const cardW = isMobile ? 240 : 320;
+  const cardH = isMobile ? 320 : 420;
 
   const go = useCallback((dir: 1 | -1) => {
     setActive((a) => (a + dir + COUNT) % COUNT);
@@ -55,7 +63,7 @@ export default function DNAProjectCarousel() {
   const onPointerMove = (e: React.PointerEvent) => {
     if (!isDragging.current || dragStartX.current === null) return;
     const dx = e.clientX - dragStartX.current;
-    if (Math.abs(dx) > CARD_W * 0.28) {
+    if (Math.abs(dx) > cardW * 0.28) {
       isDragging.current = false;
       go(dx < 0 ? 1 : -1);
     }
@@ -84,15 +92,15 @@ export default function DNAProjectCarousel() {
   }, [go]);
 
   return (
-    <section id="projects" className="relative py-24 bg-[#07070a] overflow-hidden">
+    <section id="projects" className="relative py-16 sm:py-24 bg-[#07070a] overflow-hidden">
       {/* Ambient */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_60%,rgba(227,92,36,0.06)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-xs font-bold tracking-widest text-[#e35c24] uppercase">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-[11px] sm:text-xs font-bold tracking-widest text-[#e35c24] uppercase">
             <Sparkles className="w-3.5 h-3.5" />
             OUR PROJECTS
           </div>
@@ -104,7 +112,7 @@ export default function DNAProjectCarousel() {
         {/* ── DNA Stage ── */}
         <div
           className="relative select-none cursor-grab active:cursor-grabbing"
-          style={{ height: CARD_H + 120, perspective: "1100px" }}
+          style={{ height: cardH + 80, perspective: "1100px" }}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -120,7 +128,7 @@ export default function DNAProjectCarousel() {
             if (Math.abs(norm) > 0.52) return null;
 
             const { scale, opacity, zIndex, rotateY, y, blur } = getDNA(norm);
-            const x = diff * CARD_W * 0.92;
+            const x = diff * cardW * 0.92;
             const isCenter = diff === 0;
 
             return (
@@ -130,10 +138,10 @@ export default function DNAProjectCarousel() {
                   position:       "absolute",
                   left:           "50%",
                   top:            "50%",
-                  width:          CARD_W,
-                  height:         CARD_H,
-                  x:              x - CARD_W / 2,
-                  y:              y - CARD_H / 2,
+                  width:          cardW,
+                  height:         cardH,
+                  x:              x - cardW / 2,
+                  y:              y - cardH / 2,
                   scale,
                   rotateY,
                   opacity,
@@ -141,7 +149,7 @@ export default function DNAProjectCarousel() {
                   filter:         `blur(${blur}px)`,
                   transformStyle: "preserve-3d",
                 }}
-                animate={{ x: x - CARD_W / 2, y: y - CARD_H / 2, scale, rotateY, opacity, filter: `blur(${blur}px)` }}
+                animate={{ x: x - cardW / 2, y: y - cardH / 2, scale, rotateY, opacity, filter: `blur(${blur}px)` }}
                 transition={{ type: "spring", stiffness: 90, damping: 22, mass: 0.85 }}
                 onClick={() => { if (!isCenter) setActive(i); }}
               >

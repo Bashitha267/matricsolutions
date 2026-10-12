@@ -60,7 +60,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0d]"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0d] pt-20 pb-10 sm:pt-0 sm:pb-0"
     >
       {/* ── Full-screen particle constellation background ── */}
       <ParticleNetwork />
@@ -87,7 +87,7 @@ export default function Hero() {
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
-          className="mt-2 h-[3px] w-52 bg-gradient-to-r from-transparent via-[#e35c24] to-transparent rounded-full"
+          className="mt-2 h-[3px] w-36 sm:w-52 bg-gradient-to-r from-transparent via-[#e35c24] to-transparent rounded-full"
         />
 
         {/* Typewriter subtitle */}
@@ -95,7 +95,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9 }}
-          className="mt-6 text-lg sm:text-2xl font-medium min-h-[2rem]"
+          className="mt-4 sm:mt-6 text-base sm:text-2xl font-medium min-h-[2rem]"
         >
           <Typewriter />
         </motion.p>
@@ -105,15 +105,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.1 }}
-          className="mt-10"
+          className="mt-6 sm:mt-10"
         >
           <Link
             href="#contactus"
-            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-white/30 bg-transparent hover:bg-white/[0.08] text-white font-semibold text-base tracking-wide transition-all duration-300 hover:border-[#e35c24] hover:shadow-[0_0_28px_rgba(227,92,36,0.35)] group"
+            className="inline-flex items-center gap-2.5 sm:gap-3 px-6 py-3 sm:px-8 sm:py-3.5 rounded-full border border-white/30 bg-transparent hover:bg-white/[0.08] text-white font-semibold text-sm sm:text-base tracking-wide transition-all duration-300 hover:border-[#e35c24] hover:shadow-[0_0_28px_rgba(227,92,36,0.35)] group"
           >
             <span>Contact us</span>
-            <span className="w-7 h-7 rounded-full bg-[#e35c24] flex items-center justify-center shadow-[0_0_12px_rgba(227,92,36,0.6)] group-hover:scale-110 transition-transform duration-300">
-              <ArrowRight className="w-3.5 h-3.5 text-white" />
+            <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#e35c24] flex items-center justify-center shadow-[0_0_12px_rgba(227,92,36,0.6)] group-hover:scale-110 transition-transform duration-300">
+              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
             </span>
           </Link>
         </motion.div>

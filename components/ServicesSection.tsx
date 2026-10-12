@@ -430,7 +430,7 @@ export default function ScrollTimelineServices() {
           </div>
 
           {/* ─ LEFT TEXT PANEL ─ */}
-          <div className="flex-1 flex flex-col justify-center px-8 lg:px-10 xl:px-16 max-w-[52%]">
+          <div className="flex-1 flex flex-col justify-center px-5 sm:px-8 lg:px-10 xl:px-16 w-full lg:max-w-[52%] pt-8 pb-16 sm:py-0">
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -439,12 +439,12 @@ export default function ScrollTimelineServices() {
                 animate={{ opacity: 1, x: 0,   filter: "blur(0px)" }}
                 exit   ={{ opacity: 0, x:  40, filter: "blur(8px)" }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className="space-y-6"
+                className="space-y-3 sm:space-y-4 lg:space-y-6"
               >
                 {/* Service number badge */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5 sm:gap-3">
                   <div
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-black tracking-widest uppercase"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-black tracking-widest uppercase"
                     style={{
                       background: `${svc.accent}15`,
                       border: `1px solid ${svc.accent}40`,
@@ -452,13 +452,13 @@ export default function ScrollTimelineServices() {
                     }}
                   >
                     <span
-                      className="w-2 h-2 rounded-full animate-pulse"
+                      className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse"
                       style={{ backgroundColor: svc.accent }}
                     />
                     SERVICE {svc.num}
                   </div>
                   {/* Progress fraction */}
-                  <span className="text-xs font-bold text-slate-500">
+                  <span className="text-[11px] sm:text-xs font-bold text-slate-500">
                     {activeIdx + 1} / {SERVICES.length}
                   </span>
                 </div>
@@ -467,7 +467,7 @@ export default function ScrollTimelineServices() {
                 <h2
                   className="font-black leading-[1.0] tracking-tight text-white"
                   style={{
-                    fontSize: "clamp(2.4rem, 5vw, 4rem)",
+                    fontSize: "clamp(1.9rem, 4.5vw, 4rem)",
                     fontFamily: "var(--font-montserrat, sans-serif)",
                     whiteSpace: "pre-line",
                   }}
@@ -480,30 +480,30 @@ export default function ScrollTimelineServices() {
 
                 {/* Tagline */}
                 <p
-                  className="text-sm font-bold tracking-wide uppercase"
+                  className="text-xs sm:text-sm font-bold tracking-wide uppercase"
                   style={{ color: `${svc.accent}bb` }}
                 >
                   {svc.tagline}
                 </p>
 
                 {/* Description */}
-                <p className="text-slate-300 text-base leading-relaxed max-w-md">
+                <p className="text-slate-300 text-xs sm:text-base leading-relaxed max-w-md">
                   {svc.description}
                 </p>
 
                 {/* Feature list */}
-                <ul className="space-y-2.5">
+                <ul className="space-y-1.5 sm:space-y-2.5">
                   {svc.features.map((f, fi) => (
                     <motion.li
                       key={fi}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.15 + fi * 0.08, duration: 0.4 }}
-                      className="flex items-center gap-3 text-sm text-slate-200"
+                      className="flex items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-slate-200"
                     >
                       <CheckCircle
                         className="shrink-0"
-                        style={{ color: svc.accent, width: 16, height: 16 }}
+                        style={{ color: svc.accent, width: 15, height: 15 }}
                       />
                       {f}
                     </motion.li>
@@ -511,21 +511,21 @@ export default function ScrollTimelineServices() {
                 </ul>
 
                 {/* CTA */}
-                <div className="pt-2 flex items-center gap-4">
+                <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2.5 sm:gap-4">
                   <a
                     href="#contactus"
-                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl font-bold text-sm text-black transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                    className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm text-black transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
                     style={{
                       backgroundColor: svc.accent,
                       boxShadow: `0 0 20px ${svc.accent}50, 0 4px 14px rgba(0,0,0,0.4)`,
                     }}
                   >
                     {svc.cta}
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                   <a
                     href="#contactus"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+                    className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-300 hover:text-white transition-colors"
                     style={{
                       border: "1px solid rgba(255,255,255,0.12)",
                       background: "rgba(255,255,255,0.04)",
@@ -540,7 +540,7 @@ export default function ScrollTimelineServices() {
             {/* Scroll hint (only on first service) */}
             {activeIdx === 0 && (
               <motion.div
-                className="mt-10 flex items-center gap-2"
+                className="mt-4 sm:mt-10 flex items-center gap-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
@@ -549,14 +549,14 @@ export default function ScrollTimelineServices() {
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
-                      className="w-5 h-[2px] rounded-full"
+                      className="w-4 sm:w-5 h-[2px] rounded-full"
                       style={{ backgroundColor: svc.accent }}
                       animate={{ scaleX: [1, 0.4, 1], opacity: [0.4, 1, 0.4] }}
                       transition={{ duration: 1.2, delay: i * 0.2, repeat: Infinity }}
                     />
                   ))}
                 </div>
-                <span className="text-xs text-slate-500 uppercase tracking-widest">
+                <span className="text-[11px] sm:text-xs text-slate-500 uppercase tracking-widest">
                   Scroll to explore
                 </span>
               </motion.div>
@@ -586,20 +586,21 @@ export default function ScrollTimelineServices() {
         </div>
 
         {/* ── Bottom service nav pills ── */}
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
+        <div className="absolute bottom-2.5 sm:bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 z-20 max-w-[95vw] px-2 overflow-x-auto no-scrollbar">
           {SERVICES.map((s, i) => (
             <div
               key={i}
-              className="rounded-full transition-all duration-500 text-[9px] font-black uppercase tracking-wider overflow-hidden"
+              className="rounded-full transition-all duration-500 text-[8px] sm:text-[9px] font-black uppercase tracking-wider overflow-hidden shrink-0"
               style={{
-                height: 22,
-                padding: "0 10px",
+                height: 20,
+                padding: activeIdx === i ? "0 8px" : "0 4px",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 backgroundColor: activeIdx === i ? s.accent : "rgba(255,255,255,0.06)",
                 color:           activeIdx === i ? "#000" : "rgba(255,255,255,0.3)",
                 boxShadow:       activeIdx === i ? `0 0 14px ${s.accent}70` : "none",
-                maxWidth:        activeIdx === i ? 140 : 22,
+                maxWidth:        activeIdx === i ? 120 : 16,
                 border:          `1px solid ${activeIdx === i ? s.accent : "rgba(255,255,255,0.06)"}`,
               }}
             >

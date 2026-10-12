@@ -50,44 +50,52 @@ export default function ParticleText({ height = 220, className = "" }: Props) {
     canvas.style.height = H + "px";
 
     /* — Offscreen canvas — render two lines of text — */
-    const off    = document.createElement("canvas");
-    off.width    = W * dpr;
-    off.height   = H * dpr;
-    const octx   = off.getContext("2d")!;
-    const line1 = "WE CAN HELP YOU GROW YOUR";
-    const line2 = "BUSINESS.";
+    const isMobile = W < 640;
+    const lines = isMobile
+      ? [
+          { text: "WE CAN HELP YOU", color: "#ffffff" },
+          { text: "GROW YOUR",       color: "#ffffff" },
+          { text: "BUSINESS.",       color: "#e35c24" },
+        ]
+      : [
+          { text: "WE CAN HELP YOU GROW YOUR", color: "#ffffff" },
+          { text: "BUSINESS.",                color: "#e35c24" },
+        ];
 
     // Target safe width: 90% of available canvas width so text has side padding
     const maxTextWidth = W * dpr * 0.90;
 
-    let fs = Math.min(W * 0.055, 64);
+    const off    = document.createElement("canvas");
+    off.width    = W * dpr;
+    off.height   = H * dpr;
+    const octx   = off.getContext("2d")!;
+
+    let fs = Math.min(W * (isMobile ? 0.082 : 0.055), isMobile ? 34 : 64);
     octx.font = `900 ${fs * dpr}px Montserrat, "Arial Black", sans-serif`;
 
-    const w1 = octx.measureText(line1).width;
-    const w2 = octx.measureText(line2).width;
-    const maxW = Math.max(w1, w2);
+    let maxW = 0;
+    for (const l of lines) {
+      const w = octx.measureText(l.text).width;
+      if (w > maxW) maxW = w;
+    }
 
     if (maxW > maxTextWidth && maxW > 0) {
       fs = Math.floor(fs * (maxTextWidth / maxW));
     }
     fs = Math.max(fs, 16);
 
-    const lh     = fs * 1.26;
-    const cx     = (W / 2) * dpr;
-    const cy1    = (H / 2 - lh * 0.52) * dpr;
-    const cy2    = (H / 2 + lh * 0.52) * dpr;
+    const lh     = fs * (isMobile ? 1.28 : 1.25);
+    const totalH = (lines.length - 1) * lh;
+    const startY = (H / 2 - totalH * 0.5) * dpr;
 
     octx.font        = `900 ${fs * dpr}px Montserrat, "Arial Black", sans-serif`;
     octx.textAlign   = "center";
     octx.textBaseline = "middle";
 
-    /* Line 1 — white */
-    octx.fillStyle = "#ffffff";
-    octx.fillText(line1, cx, cy1);
-
-    /* Line 2 — orange */
-    octx.fillStyle = "#e35c24";
-    octx.fillText(line2, cx, cy2);
+    for (let li = 0; li < lines.length; li++) {
+      octx.fillStyle = lines[li].color;
+      octx.fillText(lines[li].text, (W / 2) * dpr, startY + li * lh * dpr);
+    }
 
     /* — Sample pixels — */
     const imageData = octx.getImageData(0, 0, off.width, off.height);

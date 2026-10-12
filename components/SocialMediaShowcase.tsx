@@ -97,7 +97,7 @@ export default function SocialMediaShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-28 bg-[#07070a] overflow-hidden"
+      className="relative py-16 sm:py-28 bg-[#07070a] overflow-hidden"
     >
       {/* Ambient glows */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-radial from-[#e35c24]/12 to-transparent blur-[150px] pointer-events-none" />
@@ -107,17 +107,17 @@ export default function SocialMediaShowcase() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:5rem_5rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,#000_60%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
           {/* ── LEFT: Text Content ── */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Section badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-xs font-bold tracking-widest text-[#e35c24] uppercase"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-[11px] sm:text-xs font-bold tracking-widest text-[#e35c24] uppercase"
             >
               <span className="w-2 h-2 rounded-full bg-[#e35c24] animate-ping" />
               <span>Social Media Marketing</span>
@@ -131,14 +131,14 @@ export default function SocialMediaShowcase() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="space-y-2"
             >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black font-[family-name:var(--font-montserrat)] text-white leading-[1.08] tracking-tight">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-[family-name:var(--font-montserrat)] text-white leading-[1.08] tracking-tight">
                 GROW YOUR{" "}
                 <span className="bg-gradient-to-r from-[#e35c24] via-[#ff7738] to-[#ffaa7d] bg-clip-text text-transparent drop-shadow-[0_5px_25px_rgba(227,92,36,0.45)]">
                   BRAND
                 </span>{" "}
                 ONLINE
               </h2>
-              <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-lg pt-2">
+              <p className="text-sm sm:text-lg text-slate-400 leading-relaxed max-w-lg pt-1 sm:pt-2">
                 We deliver excellent social media marketing so that your company receives
                 more widespread exposure — turning followers into loyal customers with
                 data-driven strategy and viral-worthy content.
@@ -265,7 +265,7 @@ export default function SocialMediaShowcase() {
                   value="+340%"
                   color="#e35c24"
                   delay={0.4}
-                  className="-top-6 -left-8 z-20"
+                  className="-top-3 left-2 sm:-top-6 sm:-left-8 z-20"
                 />
 
                 <StatBadge
@@ -274,7 +274,7 @@ export default function SocialMediaShowcase() {
                   value="12.8%"
                   color="#ec4899"
                   delay={0.55}
-                  className="top-1/3 -right-10 z-20"
+                  className="top-1/3 right-2 sm:-right-10 z-20"
                 />
 
                 <StatBadge
@@ -283,7 +283,7 @@ export default function SocialMediaShowcase() {
                   value="50K+"
                   color="#22c55e"
                   delay={0.65}
-                  className="-bottom-6 left-8 z-20"
+                  className="-bottom-3 left-2 sm:-bottom-6 sm:left-8 z-20"
                 />
 
                 {/* Glow orb behind image */}
